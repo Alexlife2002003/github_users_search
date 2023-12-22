@@ -16,7 +16,7 @@
     "timeago.js": "^4.0.0-beta.3",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "https://Alexlife2002003.github.io/github_users_search",
+  "homepage": "https://alexlife2002003.github.io/github_users_search",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
