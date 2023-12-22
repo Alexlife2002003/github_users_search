@@ -4,10 +4,13 @@ import Tabs from '../components/Tabs';
 import Repo from '../components/Repo';
 import Events from '../components/Events';
 import UsersContainer from '../components/UsersContainer';
+import Loading from '../components/Loading';
+
 const UserInfo = () => {
     const [user, setUser] = useState([])
     const [type, setType] = useState("repos");
     const [infos, setInfos] = useState([]);
+    const [loading, setLoading] = useState(null)
     const { pathname } = useLocation()
     const navigate = useNavigate();
     let BaseUrl = "https://api.github.com/users";
@@ -16,12 +19,16 @@ const UserInfo = () => {
         const res = await fetch(BaseUrl + pathname)
         const data = await res.json()
         setUser(() => [data])
+        setLoading(null);
     }
 
     async function GetUrls() {
+        setUser([]);
+        setLoading(true);
         const res = await fetch(BaseUrl + pathname + `/${type}`);
         const data = await res.json()
         setInfos(data);
+        setLoading(null);
     }
     useEffect(() => {
         GetUserInfo();
@@ -74,14 +81,17 @@ const UserInfo = () => {
                 '>
                 <Tabs type={type} setType={setType} />
             </div>
+            {loading && <Loading />}
             {type === "repos" && (
-                <div>
-                    {infos && <Repo users={infos} />}
+                <div className='grid md:grid-cols-2 grid-cols-1 gap-7 w-10/12
+                mx-auto '>
+                    {infos && <Repo repos={infos} />}
                 </div>
             )}
             {type === "received_events" && (
-                <div>
-                    <Events />
+                <div className='grid md:grid-cols-2 grid-cols-1 gap-7 w-10/12
+                mx-auto'>
+                    {infos && <Events events={infos} />}
                 </div>
             )}
             {type === "followers" && (
