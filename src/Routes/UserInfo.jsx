@@ -5,6 +5,7 @@ import Repo from '../components/Repo';
 import Events from '../components/Events';
 import UsersContainer from '../components/UsersContainer';
 import Loading from '../components/Loading';
+import LoadingSkeletonUsersContainer from '../components/LoadingSkeletonUsersContainer';
 
 const UserInfo = () => {
     const [user, setUser] = useState([])
@@ -95,7 +96,9 @@ const UserInfo = () => {
                 </div>
             )}
             {type === "followers" && (
+                
                 <div>
+                    
                     <UsersContainer users={infos} />
                 </div>
             )}
