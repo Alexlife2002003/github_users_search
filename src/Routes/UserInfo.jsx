@@ -95,11 +95,12 @@ const UserInfo = () => {
                     {infos && <Events events={infos} />}
                 </div>
             )}
+
             {type === "followers" && (
-                
+
                 <div>
-                    
-                    <UsersContainer users={infos} />
+
+                    {<UsersContainer users={infos} />}
                 </div>
             )}
         </div>
