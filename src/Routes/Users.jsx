@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import UsersContainer from '../components/UsersContainer';
 import { Input } from 'postcss';
 import Loading from '../components/Loading';
+import LoadingSkeletonUsersContainer from '../components/LoadingSkeletonUsersContainer';
 
 const Users = () => {
     const [users, setUsers] = useState([]);
@@ -49,7 +50,7 @@ const Users = () => {
                 </button>
             </div>
 
-            {loading ? <Loading /> : <UsersContainer users={users} />}
+            {loading ? <LoadingSkeletonUsersContainer /> : <UsersContainer users={users} />}
         </div>
     )
 }
