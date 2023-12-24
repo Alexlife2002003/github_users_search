@@ -33,7 +33,7 @@ const UsersContainer = ({ users }) => {
               </div>
             ) : (
               <div key={idx} className="text-lg">
-                No user
+                <LoadingSkeletonUsersContainer />
               </div>
             )
           )}
